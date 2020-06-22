@@ -3,7 +3,7 @@ library(shiny)
 ######################################## ui ########################################
 my_ui <- fluidPage(
   # Application title
-  titlePanel("Correlación cruzada", windowTitle = "Correlación cruzada"),
+  titlePanel("CorrelaciÃ³n cruzada", windowTitle = "CorrelaciÃ³n cruzada"),
   # Sidebar layout with input and output definitions 
   sidebarLayout(
     # Inputs
@@ -18,7 +18,8 @@ my_ui <- fluidPage(
       uiOutput("start_button"),
       tableOutput("resultado"),
       plotOutput("grafico"),
-      uiOutput("get_the_result")
+      uiOutput("get_the_result"),
+      br()
     )
   )
 )
@@ -34,7 +35,7 @@ my_server <- function(input, output) {
     mioutput <- data.frame("lag"=correlac$lag, "ccorr"=correlac$acf)
     mioutput$var1 <- input$selected_col[1]
     mioutput$var2 <- input$selected_col[2]
-    mioutput <- mioutput[mioutput$lag>=0,]
+    # mioutput <- mioutput[mioutput$lag>=0,]
     return(mioutput)
   }
   plot_function <- function(){
